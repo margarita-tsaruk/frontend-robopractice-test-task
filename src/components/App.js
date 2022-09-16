@@ -1,4 +1,3 @@
-// import React, { Component } from 'react';
 import { useState, useEffect } from 'react';
 import api from '../components/api';
 import Table from '../components/Table'
@@ -20,7 +19,7 @@ function App() {
     return (
       <div className="container">
         <Table 
-        data={data}
+          data={data}
         />
        </div>
       );

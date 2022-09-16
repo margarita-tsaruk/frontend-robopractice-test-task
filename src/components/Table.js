@@ -1,4 +1,9 @@
+import Data from './Data';
+
 function Table(data) {
+  
+  
+  
   return (
     <table className="table">
       <thead>
@@ -26,17 +31,26 @@ function Table(data) {
           <th>20</th>
           <th>21</th>
           <th>22</th>
+          <th>23</th>
+          <th>24</th>
+          <th>25</th>
+          <th>26</th>
+          <th>27</th>
+          <th>28</th>
+          <th>29</th>
+          <th>30</th>
+          <th>31</th>
           <th>Monthly total</th>
         </tr>
-			</thead><tbody>
-					{data.data.map(item => (
-						<tr key={item.id}>
-							<td>{item.id}</td>
-							<td>{item.fullName}</td>
-							<td>{item.days}</td>
-						</tr>
-					))}
-				</tbody>
+      </thead>
+        <tbody>
+          {data.data.map(item => (
+            <Data
+              key={item.id}
+              data={item}
+             />
+          ))}
+        </tbody>
     </table>
   )
 }
