@@ -1,20 +1,18 @@
 import Data from './Data';
 
-function Table(data) {
-  
-  
-  
+function Table({ userData, sortData }) {
+
   return (
     <table className="table">
       <thead>
         <tr>
           <th>User</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
+          <th onClick={() => {sortData('1')}}>1</th>
+          <th onClick={() => {sortData('2')}}>2</th>
+          <th onClick={() => {sortData('3')}}>3</th>
+          <th onClick={() => {sortData('4')}}>4</th>
+          <th onClick={() => {sortData('5')}}>5</th>
+          <th onClick={() => {sortData('6')}}>6</th>
           <th>7</th>
           <th>7</th>
           <th>9</th>
@@ -44,11 +42,13 @@ function Table(data) {
         </tr>
       </thead>
         <tbody>
-          {data.data.map(item => (
-            <Data
-              key={item.id}
-              data={item}
-             />
+          {userData.map(item => (
+            <tr key={item.id}> 
+              <td>{item.Fullname}</td>
+              <Data
+                 data={item}
+              />
+            </tr> 
           ))}
         </tbody>
     </table>

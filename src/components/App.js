@@ -3,13 +3,22 @@ import api from '../components/api';
 import Table from '../components/Table'
 
 function App() {
-  const [data, setData] = useState([]);
+  const [userData, setUserData] = useState([]);
+
+  const sortData = (field) => {
+    const copyData = userData.concat();
+    const sortedData = copyData.sort (
+      (a, b) => {
+        return a[field] > b[field] ? 1: -1 }
+    );
+    console.log(sortedData);
+  }
 
   useEffect(() => {
     api.getData()
       .then((res) => {
         console.log(res);
-        setData(res)
+        setUserData(res)
       })
       .catch(() => {
         console.log("Ошибка!");
@@ -19,7 +28,8 @@ function App() {
     return (
       <div className="container">
         <Table 
-          data={data}
+          userData={userData}
+          sortData={sortData}
         />
        </div>
       );

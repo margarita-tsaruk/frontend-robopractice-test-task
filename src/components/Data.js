@@ -1,4 +1,3 @@
-
 function Data( { data } ) {
   console.log(data)
 
@@ -43,7 +42,7 @@ function Data( { data } ) {
 
 	return (
    <tr>
-      <td>{data.Fullname}</td>
+     
       <td>{calc()}</td>
       <td>{calc2()}</td>
     </tr>
