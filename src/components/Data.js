@@ -1,5 +1,4 @@
 function Data( { data } ) {
-  console.log(data)
 
   const date = data.Days[0].Date;
  
@@ -40,12 +39,13 @@ function Data( { data } ) {
     }
   }
 
-	return (
-   <tr>
-     
-      <td>{calc()}</td>
+  
+
+  return (
+    <> 
+      <td className="column__data">{calc()}</td>
       <td>{calc2()}</td>
-    </tr>
+    </> 
   )
 }
 

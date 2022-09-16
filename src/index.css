@@ -1,0 +1,31 @@
+.table {
+  position: relevant;
+}
+
+.headings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.column__fixed {
+  position: fixed;
+	margin-right: 130px;
+}
+
+.column__data {
+  margin-left: 115px;
+}
+
+.input {
+  border: none;
+}
+
+.button {
+  border: none;
+  margin-right: 30px;
+  color: #1E90FF;
+	cursor: pointer;
+	padding: 0;
+}

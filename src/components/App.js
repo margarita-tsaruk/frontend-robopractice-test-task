@@ -1,36 +1,75 @@
 import { useState, useEffect } from 'react';
-import api from '../components/api';
-import Table from '../components/Table'
+import api from '../utils/api';
+import Table from '../components/Table';
+import Pagination from '../components/Pagination';
 
 function App() {
   const [userData, setUserData] = useState([]);
+  const [directionOfSort, setDirectionOfSort] = useState(true);
+  const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(5);
+  
+    useEffect(() => {
+      api.getData()
+        .then((res) => {
+          setUserData(res);
+        })
+        .catch(() => {
+          console.log("Ошибка!");
+        })
+  }, []);
+
+  const lastDataIndex = currentPage * dataPerPage;
+  const firstDataIndex = lastDataIndex - dataPerPage;
+  const currentData = userData.slice(firstDataIndex, lastDataIndex);
 
   const sortData = (field) => {
-    const copyData = userData.concat();
-    const sortedData = copyData.sort (
-      (a, b) => {
-        return a[field] > b[field] ? 1: -1 }
-    );
-    console.log(sortedData);
+   const copiedData = userData.concat();
+    
+    let sortedData;
+    
+    if (directionOfSort) {
+      sortedData = copiedData.sort (
+        (a, b) => {
+          return a[field] > b[field] ? 1 : -1 })
+    } else {
+      sortedData = copiedData.reverse (
+        (a, b) => {
+          return a[field] > b[field] ? 1 : -1 })
+    }
+
+    setUserData(sortedData);
+    setDirectionOfSort(!directionOfSort);
   }
 
-  useEffect(() => {
-    api.getData()
-      .then((res) => {
-        console.log(res);
-        setUserData(res)
-      })
-      .catch(() => {
-        console.log("Ошибка!");
-      })
-  }, [])
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const nextPage = () => setCurrentPage(prev => prev +1);
+  const prevPage = () => setCurrentPage(prev => prev -1);
 
     return (
       <div className="container">
-        <Table 
-          userData={userData}
-          sortData={sortData}
+        <input
+          id="link-avatar"
+          type="text"
+          name="link"
+          className="input"
+          placeholder="Search"
+          onChange={(event) => setSearch(event.target.value)}
         />
+        <Table 
+          userData={currentData}
+          search={search}
+          sortData={sortData}
+          directionOfSort={directionOfSort}
+        />
+        <Pagination
+          dataPerPage={dataPerPage}
+          totalData={userData.length}
+          paginate={paginate}
+        />
+        <button className="button button__back" onClick={prevPage}>Previous Page</button>
+        <button className="button button__next" onClick={nextPage}>Next Page</button>
        </div>
       );
     }

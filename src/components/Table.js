@@ -1,19 +1,28 @@
 import Data from './Data';
 
-function Table({ userData, sortData }) {
+import ArrowUp from '../utils/arrowUp';
+import ArrowDown from '../utils/arrowDown';
+
+function Table({ userData, sortData, directionOfSort, search }) {
+  console.log(userData)
+
+  const filteredData = userData.filter(data => {
+    return data.Fullname.toLowerCase().includes(search.toLowerCase());
+  })
 
   return (
     <table className="table">
       <thead>
-        <tr>
-          <th>User</th>
-          <th onClick={() => {sortData('1')}}>1</th>
+        <tr className="headings">
+          <th onClick={() => {sortData('User')}} className="column__fixed">
+            User {directionOfSort ? <ArrowUp /> :  <ArrowDown />}
+            </th>
+          <th onClick={() => {sortData('1')}} className="column__data">1</th>
           <th onClick={() => {sortData('2')}}>2</th>
           <th onClick={() => {sortData('3')}}>3</th>
           <th onClick={() => {sortData('4')}}>4</th>
           <th onClick={() => {sortData('5')}}>5</th>
           <th onClick={() => {sortData('6')}}>6</th>
-          <th>7</th>
           <th>7</th>
           <th>9</th>
           <th>10</th>
@@ -42,9 +51,9 @@ function Table({ userData, sortData }) {
         </tr>
       </thead>
         <tbody>
-          {userData.map(item => (
+          {filteredData.map(item => (
             <tr key={item.id}> 
-              <td>{item.Fullname}</td>
+              <td className="column__fixed">{item.Fullname}</td>
               <Data
                  data={item}
               />
