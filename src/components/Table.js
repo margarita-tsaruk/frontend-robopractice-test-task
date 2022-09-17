@@ -1,6 +1,4 @@
 import Data from './Data';
-//import ErrorBoundary from '../components/ErrorBoundary';
-
 import ArrowUp from '../utils/arrowUp';
 import ArrowDown from '../utils/arrowDown';
 

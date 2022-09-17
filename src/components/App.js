@@ -55,7 +55,7 @@ function App() {
             type="text"
             name="link"
             className="input"
-         s   placeholder="Search"
+            placeholder="Search"
             onChange={(event) => setSearch(event.target.value)}
           />
           <Table 

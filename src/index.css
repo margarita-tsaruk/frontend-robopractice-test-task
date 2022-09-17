@@ -1,9 +1,9 @@
 @import url(./normalize.css);
 
 .page {
-	margin: 0 auto;
-	max-width: 100%;
-	min-width: 280px;
+  margin: 0 auto;
+  max-width: 1280px;
+  min-width: 280px;
 }
 
 .container {
@@ -13,15 +13,7 @@
 }
 
 .table {
-  max-width: 1280px;
-}
-
-.headings {
-	display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 30px));
-  grid-auto-columns: min-content;
-  grid-auto-flow: column;
-  gap: 10px;
+  table-layout: auto;
 }
 
 .column__fixed {
@@ -45,20 +37,6 @@
 
 .column__first {
   max-width: 100px;
-}
-
-.table__body {
-  display: grid;  
-  grid-template-columns: 1fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.column__data {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 30px));
-  grid-auto-columns: min-content;
-  grid-auto-flow: column;
-  gap: 10px;
 }
 
 .column__numbers {
