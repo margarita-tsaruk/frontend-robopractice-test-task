@@ -1,15 +1,12 @@
 function Data( { data } ) {
-
-  const date = data.Days[0].Date;
+  
+  console.log(data) //объект Days у одного item
+  
+  const date = data.Date;
  
-  const startTime = data.Days[0].Start;
-  const endTime = data.Days[0].End;
+  const startTime = data.Start;
+  const endTime = data.End;
 
-  const date2 = data.Days[1].Date;
-	const startTime2 = data.Days[1].Start;
-  const endTime2 = data.Days[1].End;
-
-	
   let getDate = (string) => new Date(0, 0,0, string.split('-')[0],string.split('-')[1]);
   let diff = (getDate(endTime) - getDate(startTime));
 
@@ -18,33 +15,16 @@ function Data( { data } ) {
   let result = hours + ':' + minutes;
 
   function calc() {
-    if (date !== '2021-05-01') {
+    if (!date) {
       return result = '0';
     } else {
       return result;
     }
   }
  
-  //данные второго столбца
-  let diff2 = (getDate(endTime2) - getDate(startTime2));
-  let hours2 = Math.floor((diff2 % 86400000) / 3600000);
-  let minutes2 = Math.round(((diff2 % 86400000) % 3600000) / 60000);
-  let result2 = hours2 + ':' + minutes2;
-  
-  function calc2() {
-    if (date2 !== '2021-05-02') {
-      return result2 = '0';
-    } else {
-      return result2;
-    }
-  }
-
-  
-
   return (
     <> 
-      <td className="column__data">{calc()}</td>
-      <td>{calc2()}</td>
+      <td className="column__first">{calc()}</td>
     </> 
   )
 }

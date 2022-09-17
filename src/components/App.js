@@ -48,29 +48,31 @@ function App() {
   const prevPage = () => setCurrentPage(prev => prev -1);
 
     return (
-      <div className="container">
-        <input
-          id="link-avatar"
-          type="text"
-          name="link"
-          className="input"
-          placeholder="Search"
-          onChange={(event) => setSearch(event.target.value)}
-        />
-        <Table 
-          userData={currentData}
-          search={search}
-          sortData={sortData}
-          directionOfSort={directionOfSort}
-        />
-        <Pagination
-          dataPerPage={dataPerPage}
-          totalData={userData.length}
-          paginate={paginate}
-        />
-        <button className="button button__back" onClick={prevPage}>Previous Page</button>
-        <button className="button button__next" onClick={nextPage}>Next Page</button>
-       </div>
+      <div className="page">
+          <div className="container">
+          <input
+            id="link-avatar"
+            type="text"
+            name="link"
+            className="input"
+         s   placeholder="Search"
+            onChange={(event) => setSearch(event.target.value)}
+          />
+          <Table 
+            userData={currentData}
+            search={search}
+            sortData={sortData}
+            directionOfSort={directionOfSort}
+          />
+          <Pagination
+            dataPerPage={dataPerPage}
+            totalData={userData.length}
+            paginate={paginate}
+          />
+          <button className="button button__back" onClick={prevPage}>Previous Page</button>
+          <button className="button button__next" onClick={nextPage}>Next Page</button>
+        </div>
+      </div>
       );
     }
 

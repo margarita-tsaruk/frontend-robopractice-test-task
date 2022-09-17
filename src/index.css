@@ -1,31 +1,83 @@
+@import url(./normalize.css);
+
+.page {
+	margin: 0 auto;
+	max-width: 100%;
+	min-width: 280px;
+}
+
+.container {
+  padding: 0;
+  width: 1280px;
+  margin: 0 auto;
+}
+
 .table {
-  position: relevant;
+  max-width: 1280px;
 }
 
 .headings {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0;
+	display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 30px));
+  grid-auto-columns: min-content;
+  grid-auto-flow: column;
+  gap: 10px;
 }
 
 .column__fixed {
-  position: fixed;
-	margin-right: 130px;
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0px;
+}
+
+.column__fixed_user {
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0px;
+  width: 150px;
+}
+
+.column__fixed_last {
+  position: sticky;
+	position: -webkit-sticky;
+  right: 0px;
+}
+
+.column__first {
+  max-width: 100px;
+}
+
+.table__body {
+  display: grid;  
+  grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .column__data {
-  margin-left: 115px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 30px));
+  grid-auto-columns: min-content;
+  grid-auto-flow: column;
+  gap: 10px;
+}
+
+.column__numbers {
+  resize: horizontal;
+  padding: 0;
 }
 
 .input {
   border: none;
+  border-bottom: solid 1px #1E90FF;
+  padding: 0;
+  margin: 10px 0 10px;
+  padding-bottom: 5px;
 }
 
 .button {
   border: none;
   margin-right: 30px;
   color: #1E90FF;
-	cursor: pointer;
-	padding: 0;
+  cursor: pointer;
+  padding: 0;
 }
