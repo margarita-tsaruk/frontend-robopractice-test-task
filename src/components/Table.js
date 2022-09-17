@@ -1,5 +1,5 @@
 import Data from './Data';
-import ErrorBoundary from '../components/ErrorBoundary';
+//import ErrorBoundary from '../components/ErrorBoundary';
 
 import ArrowUp from '../utils/arrowUp';
 import ArrowDown from '../utils/arrowDown';
@@ -55,39 +55,14 @@ function Table({ userData, sortData, directionOfSort, search }) {
           {filteredData.map(item => (
             <tr key={item.id} className="column__data"> 
               <td className="column__fixed">{item.Fullname}</td>
-              
-              <Data data={item.Days[0]} />
-              <Data data={item.Days[1]} />
-              <Data data={item.Days[2]} />
-              <Data data={item.Days[3]} />
-              <Data data={item.Days[4]} />
-              <Data data={item.Days[5]} />
-              <Data data={item.Days[6]} />
-              <Data data={item.Days[7]} />
-              <Data data={item.Days[8]} />
-              <Data data={item.Days[9]} />
-              <Data data={item.Days[10]} />
-              <Data data={item.Days[11]} />
-              <Data data={item.Days[12]} />
-              <Data data={item.Days[13]} />
-              <Data data={item.Days[14]} />
-              <Data data={item.Days[15]} />
-              <Data data={item.Days[16]} />
-              <Data data={item.Days[17]} />
-              <Data data={item.Days[18]} />
-              {/* <Data data={item.Days[19]} />
-              <Data data={item.Days[20]} />
-              <Data data={item.Days[21]} />
-              <Data data={item.Days[22]} />
-              <Data data={item.Days[23]} />
-              <Data data={item.Days[24]} />
-              <Data data={item.Days[25]} />
-              <Data data={item.Days[26]} />
-              <Data data={item.Days[27]} />
-              <Data data={item.Days[28]} />
-              <Data data={item.Days[29]} />
-              <Data data={item.Days[30]} /> */}
-            
+              { item.Days.map((day, index) => {
+                return (
+                  <Data
+                    key={index}
+                    data={day}
+                  />
+                )
+              })}
             </tr> 
           ))}
         </tbody>
