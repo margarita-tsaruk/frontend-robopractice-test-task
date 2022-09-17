@@ -1,14 +1,11 @@
 function Data( { data } ) {
   
-  console.log(typeof data) //объект Days у одного item
+  console.log(data) //объект Days у одного item
   
-  // const isValid = () => {
-  //   return Boolean(data.includes(Date))
-  // }
+ console.log(data.Date.length) // 10
   
-  //console.log(isValid())
-  
-  const date = data.Date;
+  const date = data.Date.length;
+  console.log(date)  //10
  
   const startTime = data.Start;
   const endTime = data.End;
@@ -21,7 +18,7 @@ function Data( { data } ) {
   let result = hours + ':' + minutes;
 
   function calc() {
-    if (!date) {   //сюда пытаюсь передать boolean isInvalid
+    if (date === 0) {   //здесь пытаюсь сравнить массив
       return result = '0';
     } else {
       return result;
