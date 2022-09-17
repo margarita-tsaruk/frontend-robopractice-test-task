@@ -2,9 +2,9 @@ function Data( { data } ) {
   
   console.log(typeof data) //объект Days у одного item
   
-  const isValid = () => {
-    return Boolean(data.includes(Date))
-  }
+  // const isValid = () => {
+  //   return Boolean(data.includes(Date))
+  // }
   
   //console.log(isValid())
   
@@ -21,7 +21,7 @@ function Data( { data } ) {
   let result = hours + ':' + minutes;
 
   function calc() {
-    if (!date) {   //сюда пытаюсь передать boolean isInvalid - но выходят ошибки
+    if (!date) {   //сюда пытаюсь передать boolean isInvalid
       return result = '0';
     } else {
       return result;
