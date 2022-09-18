@@ -1,18 +1,18 @@
-import { useState } from 'react';
 import Data from './Data';
-//import MonthlyData from './MonthlyData';
 import ArrowUp from '../utils/arrowUp';
 import ArrowDown from '../utils/arrowDown';
 
 function Table({ userData, sortData, directionOfSort, search }) {
-  const [dataSum, setDataSum] = useState([]);
+  function handleDataChange(days) {
+    const dayDiff = Math.ceil(31 - days.length);
 
-  const handle = () => {
-    let arr = Array.from(dataSum)
-    console.log(arr)
-  }
-   handle()
-
+    for (let i = 0; i < dayDiff; i++) {
+      days.push(0);
+    }
+    
+    return days;
+   } 
+  
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
   })
@@ -61,25 +61,15 @@ function Table({ userData, sortData, directionOfSort, search }) {
         <tbody className="table__body">
           {filteredData.map(item => (
             <tr key={item.id} className="column__data"> 
-              <td className="column__fixed">{item.Fullname}</td>
-              { item.Days.map((day, index) => {
+              <td className="column__fixed">{item.Fullname}</td> 
+              {handleDataChange(item.Days).map((day, index) => {
                 return (
                   <Data
                     key={index}
                     data={day}
-                    setDataSum={setDataSum}
                   />
-                ) 
+                )
               })}
-              {/* { item.Days.map((day, index) => {
-                return (
-                  <MonthlyData 
-                    key={index}
-                    data={day}
-                  />
-                  
-                ) 
-              })} */}
             </tr> 
           ))}
         </tbody>
