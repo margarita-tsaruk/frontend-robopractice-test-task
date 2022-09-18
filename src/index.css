@@ -35,10 +35,6 @@
   right: 0px;
 }
 
-.column__first {
-  max-width: 100px;
-}
-
 .column__numbers {
   resize: horizontal;
   padding: 0;

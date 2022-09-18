@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import Data from './Data';
+//import MonthlyData from './MonthlyData';
 import ArrowUp from '../utils/arrowUp';
 import ArrowDown from '../utils/arrowDown';
 
 function Table({ userData, sortData, directionOfSort, search }) {
-  
+  const [dataSum, setDataSum] = useState([]);
+
+  const handle = () => {
+    let arr = Array.from(dataSum)
+    console.log(arr)
+  }
+   handle()
+
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
   })
@@ -15,7 +24,7 @@ function Table({ userData, sortData, directionOfSort, search }) {
           <th onClick={() => {sortData('User')}} className="column__fixed_user">
             User {directionOfSort ? <ArrowUp /> :  <ArrowDown />}
             </th>
-          <th onClick={() => {sortData('1')}} className="column__first">1</th>
+          <th onClick={() => {sortData('1')}} className="column__numbers">1</th>
           <th onClick={() => {sortData('2')}} className="column__numbers">2</th>
           <th onClick={() => {sortData('3')}} className="column__numbers">3</th>
           <th onClick={() => {sortData('4')}} className="column__numbers">4</th>
@@ -58,9 +67,19 @@ function Table({ userData, sortData, directionOfSort, search }) {
                   <Data
                     key={index}
                     data={day}
+                    setDataSum={setDataSum}
                   />
-                )
+                ) 
               })}
+              {/* { item.Days.map((day, index) => {
+                return (
+                  <MonthlyData 
+                    key={index}
+                    data={day}
+                  />
+                  
+                ) 
+              })} */}
             </tr> 
           ))}
         </tbody>

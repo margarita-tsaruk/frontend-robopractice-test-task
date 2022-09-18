@@ -1,12 +1,13 @@
-function Data( { data } ) {
+import { useEffect } from 'react';
+
+function Data( { data, setDataSum } ) {
   
-  console.log(data) //объект Days у одного item
+ //console.log(data) //объект Days у одного item
   
- console.log(data.Date.length) // 10
-  
+ // console.log(data.Date.length) // 10
+
   const date = data.Date.length;
-  console.log(date)  //10
- 
+  
   const startTime = data.Start;
   const endTime = data.End;
 
@@ -24,10 +25,16 @@ function Data( { data } ) {
       return result;
     }
   }
- 
+
+  useEffect(() => {
+    setDataSum(result);
+    console.log(calc())
+  
+  }, []);
+
   return (
     <> 
-      <td className="column__first">{calc()}</td>
+      <td>{calc()}</td>
     </> 
   )
 }
