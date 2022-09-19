@@ -11,11 +11,22 @@ function Table({ userData, sortData, directionOfSort, search }) {
       let date = d.getDate();
 
       arr[date-1] = day;
-      console.log(arr)
     })
 
     return arr;
    }
+
+   function handleMonthlyTotal(userData) {
+  
+    userData.forEach((user) => {
+    
+      console.log(user)
+    })
+
+    return userData;
+   }
+   handleMonthlyTotal(userData)
+
   
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
