@@ -1,4 +1,5 @@
 import Data from './Data';
+import MonthlyData from './MonthlyData';
 import ArrowUp from '../utils/arrowUp';
 import ArrowDown from '../utils/arrowDown';
 
@@ -34,19 +35,37 @@ function Table({ userData, sortData, directionOfSort, search }) {
     }
   }
   
-   function handleMonthlyTotal(data) {
-    const str = data;
-    let arr = str.split('-');
-    console.log(arr)
+    function handleMinutesCalculation(day) {
+      if (day === 0) { 
+        return '0';
+      } else {
+        let getDate = (string) => new Date(0, 0,0, string.split('-')[0],string.split('-')[1]);
+        const startTime = day.Start;
+        const endTime = day.End;
+        
+        let diff = (getDate(endTime) - getDate(startTime));
     
-     const sum = arr.reduce(function (total, amount) {
+        let minutes = Math.round(diff / 60000);
+        let result = minutes;
+    
+        return result;
+      }
+    }
+  
+    function handleTotalCalculation(arr) {
+      const newArray = arr.map((day) => {
+        const data = handleMinutesCalculation(day)
+        console.log(data)
+        return data;
+      })
+     
+      const sum = newArray.reduce(function (total, amount) {
       return total + amount;
-      
-    });
-   
+    })
+     
     console.log(sum)
-    return sum;
-   }
+     return sum;
+    }
 
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
@@ -99,15 +118,16 @@ function Table({ userData, sortData, directionOfSort, search }) {
               <td className="column__fixed">{item.Fullname}</td> 
               {handleDataChange(item.Days).map((day, index) => {
                 const data = handleCalculation(day)
-                console.log(data) // string
-                const newdata = handleMonthlyTotal(data)
-                console.log(newdata) // array of one cell
                 return (
                   <Data
                     key={index}
                     data={data}
-                    newData={newdata}
                   />
+                )
+              })}
+              {handleTotalCalculation(item.Days).map((day) => {
+                return (
+                  <td>{day}</td>
                 )
               })}
             </tr> 
