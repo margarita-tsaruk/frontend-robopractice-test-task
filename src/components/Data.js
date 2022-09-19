@@ -1,7 +1,7 @@
 function Data( { data } ) {
+  console.log(data)
   function calc() {
     if (data === 0) { 
-      console.log(true)
       return '0';
     } else {
       let getDate = (string) => new Date(0, 0,0, string.split('-')[0],string.split('-')[1]);
@@ -17,6 +17,15 @@ function Data( { data } ) {
       return result;
     }
   }
+  console.log(calc())
+  const str = (calc());
+  let arr = str.split('-');
+  console.log(arr);
+
+   const sum = arr.reduce(function (sum, current) {
+      return sum + current;
+    }, 0);
+    console.log(sum)
 
   return (
     <> 

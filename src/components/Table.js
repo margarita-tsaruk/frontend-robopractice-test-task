@@ -4,15 +4,19 @@ import ArrowDown from '../utils/arrowDown';
 
 function Table({ userData, sortData, directionOfSort, search }) {
   function handleDataChange(days) {
-    const dayDiff = Math.ceil(31 - days.length);
-
-    for (let i = 0; i < dayDiff; i++) {
-      days.push(0);
-    }
-    
-    return days;
-   } 
+    let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   
+    days.forEach((day) => {
+      let d = new Date(day.Date);
+      let date = d.getDate();
+
+      arr[date] = day;
+      console.log(arr)
+    })
+    return days;
+   }
+   
+   
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
   })
