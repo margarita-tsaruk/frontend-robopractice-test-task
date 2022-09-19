@@ -15,8 +15,7 @@ function Table({ userData, sortData, directionOfSort, search }) {
     })
     return days;
    }
-   
-   
+  
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
   })
