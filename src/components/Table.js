@@ -16,18 +16,32 @@ function Table({ userData, sortData, directionOfSort, search }) {
     return arr;
    }
 
-   function handleMonthlyTotal(userData) {
+   function handleCalculation(day) {
+    if (day === 0) { 
+      return '0';
+    } else {
+      let getDate = (string) => new Date(0, 0,0, string.split('-')[0],string.split('-')[1]);
+      const startTime = day.Start;
+      const endTime = day.End;
+      
+      let diff = (getDate(endTime) - getDate(startTime));
   
-    userData.forEach((user) => {
-    
-      console.log(user)
-    })
+      let hours = Math.floor((diff % 86400000) / 3600000);
+      let minutes = Math.round(((diff % 86400000) % 3600000) / 60000);
+      let result = hours + ':' + minutes;
+  
+      return result;
+    }
+  }
+  
+   function handleMonthlyTotal(data) {
+    const str = data;
+    let arr = str.split('-');
+    console.log(arr)
 
     return userData;
    }
-   handleMonthlyTotal(userData)
 
-  
   const filteredData = userData.filter(data => {
     return data.Fullname.toLowerCase().includes(search.toLowerCase());
   })
@@ -78,11 +92,14 @@ function Table({ userData, sortData, directionOfSort, search }) {
             <tr key={item.id} className="column__data"> 
               <td className="column__fixed">{item.Fullname}</td> 
               {handleDataChange(item.Days).map((day, index) => {
-                console.log(day)
+                const data = handleCalculation(day)
+                console.log(data)
+                const newdata = handleMonthlyTotal(data)
+                console.log(newdata)
                 return (
                   <Data
                     key={index}
-                    data={day}
+                    data={data}
                   />
                 )
               })}

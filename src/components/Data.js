@@ -1,21 +1,21 @@
 function Data( { data } ) {
-  function calc() {
-    if (data === 0) { 
-      return '0';
-    } else {
-      let getDate = (string) => new Date(0, 0,0, string.split('-')[0],string.split('-')[1]);
-      const startTime = data.Start;
-      const endTime = data.End;
+  // function calc() {
+  //   if (data === 0) { 
+  //     return '0';
+  //   } else {
+  //     let getDate = (string) => new Date(0, 0,0, string.split('-')[0],string.split('-')[1]);
+  //     const startTime = data.Start;
+  //     const endTime = data.End;
       
-      let diff = (getDate(endTime) - getDate(startTime));
+  //     let diff = (getDate(endTime) - getDate(startTime));
 
-      let hours = Math.floor((diff % 86400000) / 3600000);
-      let minutes = Math.round(((diff % 86400000) % 3600000) / 60000);
-      let result = hours + ':' + minutes;
+  //     let hours = Math.floor((diff % 86400000) / 3600000);
+  //     let minutes = Math.round(((diff % 86400000) % 3600000) / 60000);
+  //     let result = hours + ':' + minutes;
 
-      return result;
-    }
-  }
+  //     return result;
+  //   }
+  // }
   // console.log(calc())
   // const str = (calc());
   // let arr = str.split('-');
@@ -28,7 +28,7 @@ function Data( { data } ) {
 
   return (
     <> 
-      <td>{calc()}</td>
+      <td>{data}</td>
     </> 
   )
 }
