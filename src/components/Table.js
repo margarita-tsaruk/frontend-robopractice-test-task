@@ -38,8 +38,14 @@ function Table({ userData, sortData, directionOfSort, search }) {
     const str = data;
     let arr = str.split('-');
     console.log(arr)
-
-    return userData;
+    
+     const sum = arr.reduce(function (total, amount) {
+      return total + amount;
+      
+    });
+   
+    console.log(sum)
+    return sum;
    }
 
   const filteredData = userData.filter(data => {
@@ -93,13 +99,14 @@ function Table({ userData, sortData, directionOfSort, search }) {
               <td className="column__fixed">{item.Fullname}</td> 
               {handleDataChange(item.Days).map((day, index) => {
                 const data = handleCalculation(day)
-                console.log(data)
+                console.log(data) // string
                 const newdata = handleMonthlyTotal(data)
-                console.log(newdata)
+                console.log(newdata) // array of one cell
                 return (
                   <Data
                     key={index}
                     data={data}
+                    newData={newdata}
                   />
                 )
               })}
