@@ -8,12 +8,13 @@ function Table({ userData, sortData, directionOfSort, search }) {
   
     days.forEach((day) => {
       let d = new Date(day.Date);
-      let date = d.getDate();
+      let date = Math.ceil(d.getDate()-1);
 
       arr[date] = day;
       console.log(arr)
     })
-    return days;
+
+    return arr;
    }
   
   const filteredData = userData.filter(data => {
@@ -66,6 +67,7 @@ function Table({ userData, sortData, directionOfSort, search }) {
             <tr key={item.id} className="column__data"> 
               <td className="column__fixed">{item.Fullname}</td> 
               {handleDataChange(item.Days).map((day, index) => {
+                console.log(day)
                 return (
                   <Data
                     key={index}
