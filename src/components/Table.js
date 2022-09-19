@@ -8,9 +8,9 @@ function Table({ userData, sortData, directionOfSort, search }) {
   
     days.forEach((day) => {
       let d = new Date(day.Date);
-      let date = Math.ceil(d.getDate()-1);
+      let date = d.getDate();
 
-      arr[date] = day;
+      arr[date-1] = day;
       console.log(arr)
     })
 
