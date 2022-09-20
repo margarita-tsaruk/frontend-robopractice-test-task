@@ -54,8 +54,7 @@ function Table({ userData, sortData, directionOfSort, search }) {
   
     function handleTotalCalculation(arr) {
       const newArray = arr.map((day) => {
-        const data = handleMinutesCalculation(day)
-        console.log(data)
+        const data = handleMinutesCalculation(day);
         return data;
       })
      
@@ -63,7 +62,6 @@ function Table({ userData, sortData, directionOfSort, search }) {
       return total + amount;
     })
      
-    console.log(sum)
      return sum;
     }
 

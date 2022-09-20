@@ -1,8 +1,6 @@
 function MonthlyData(data) {
- 
   function handleCalculation(data) {
-    console.log(data)
-		let hours = Math.trunc(data.data/60);
+    let hours = Math.trunc(data.data/60);
     let minutes = data.data % 60;
     return hours + ':' + minutes;
   }
