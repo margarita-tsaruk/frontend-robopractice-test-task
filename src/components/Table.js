@@ -1,5 +1,5 @@
-/* eslint-disable array-callback-return */
 import Data from './Data';
+import MonthlyData from './MonthlyData';
 import ArrowUp from '../utils/arrowUp';
 import ArrowDown from '../utils/arrowDown';
 
@@ -125,9 +125,9 @@ function Table({ userData, sortData, directionOfSort, search }) {
                   />
                 )
               })}
-             {/* {handleTotalCalculation(item.Days).map((day) => {
-                return console.log(day)
-             })} */}
+               <MonthlyData
+                data={handleTotalCalculation(item.Days)}
+               />
             </tr> 
           ))}
         </tbody>
